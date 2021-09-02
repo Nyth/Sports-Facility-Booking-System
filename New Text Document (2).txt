@@ -1,0 +1,32 @@
+Customer (customer_Id, fName, lName, sex, telNo, street, city, state, zipcode )
+
+Primary key – customer_Id
+
+Staff (staff_Id, fName, lName, sex, DOB, position, salary, telNo, street, city,  
+    state, zipcode)
+
+Primary key – stuff_Id
+
+Venue (venue_Id, name, type capacity, price, street, city, state, zipcode)
+
+Primary key – venue_Id
+
+Equipment (eq_Id, type, availability, venue_Id)
+
+Primary key – eq_Id
+Foreign key – venue_Id references Venue (venue_Id)
+Reservation (reservation_Id, reservationdate, time, duration,  customer_Id, 
+    staff_Id, venue_Id)
+
+Primary key – reservation_Id
+Foreign key – customer_Id references Customer (customer_Id)
+Foreign key – staff_Id references Staff (staff_Id)
+Foreign key – venue_Id references Venue (venue_Id)
+
+Payment (payment_Id, paymentDate, amount, reservation_Id)
+
+Primary key – payment_Id
+Foreign key – reservation_Id references Reservation (reservation_Id)
+
+
+

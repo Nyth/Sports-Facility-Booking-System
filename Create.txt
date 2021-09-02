@@ -1,0 +1,30 @@
+Create Table Customer
+(
+	customer_Id varchar(20) not null,fName char(10),lName char(10),sex char(1),telNo number(11),street varchar(20),city varchar(20),state varchar(20),zipcode number(6),PRIMARY KEY (customer_Id));
+
+
+
+Create Table Staff
+(staff_Id varchar(20) not null,fName char(10),lName char(10),sex char(1),dob date,position char(10),salary number(7,2),telNo number(11),street varchar(20),city varchar(20),state varchar(20),zipcode number(6),PRIMARY KEY (staff_Id));
+ 
+Create Table Venue
+(venue_Id varchar(20) not null,name char(50),type char(20),capacityn number(5),price number(6),street varchar(20),city varchar(20),state varchar(20),zipcode number(6),PRIMARY KEY (venue_Id));
+
+
+Create Table Equipment
+(eq_Id varchar(20) not null,type char(20),availibility number(3),venue_Id varchar(20),PRIMARY KEY (eq_Id),FOREIGN KEY (venue_Id) references Venue(venue_Id));
+
+
+Create Table Reservation
+(reservation_Id varchar(20) not null,reservationdate date,time number(4),duration number(2),customer_Id varchar(20),staff_Id varchar(20),venue_Id varchar(20),PRIMARY KEY (reservation_Id),FOREIGN KEY (customer_Id) references Customer(customer_Id),FOREIGN KEY (staff_Id) references Staff(staff_Id),FOREIGN KEY (venue_Id) references Venue(venue_Id));
+
+
+Create Table Payment
+(
+	payment_Id varchar(20) not null,
+	paymentdate date,
+	amount number(10),
+	reservation_Id varchar(20),
+	PRIMARY KEY (payment_Id),
+	FOREIGN KEY (reservation_Id) references Reservation(reservation_Id)
+);
